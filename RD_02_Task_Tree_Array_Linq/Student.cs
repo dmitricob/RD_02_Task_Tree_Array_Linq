@@ -23,13 +23,22 @@ namespace RD_02_Task_Tree_Array_Linq
             if (other is Student)
             {
                 int compByScore = this.Score.CompareTo(((Student)other).Score);
-                int compByName = (this.Name + this.Secondname).CompareTo(((Student)other).Name + ((Student)other).Secondname);
-                return compByScore.CompareTo(compByName);
+                if(compByScore == 0)
+                {
+                    int compByName = (this.Name + this.Secondname).CompareTo(((Student)other).Name + ((Student)other).Secondname);
+                    return compByName;               
+                }
+                return compByScore;
             }
             else
             {
                 throw new ArgumentException("Error compare type");
             }
+        }
+
+        public override string ToString()
+        {
+            return $"{Secondname} {Name}  -  {Score}";
         }
     }
 }
