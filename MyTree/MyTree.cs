@@ -150,7 +150,6 @@ namespace MyTree
             }
         }
 
-
         public List<NodeType> ToList()
         {
             List<NodeType> lst = new List<NodeType>();

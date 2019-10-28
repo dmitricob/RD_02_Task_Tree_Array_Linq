@@ -10,6 +10,16 @@ namespace ConsoleApplication8
         public int Year { get; set; }
     }
 
+    class Student
+    {
+        public string Secondname { get; set; }
+        public int SchoolNumber { get; set; }
+        public int EnterYear { get; set; }
+        public override string ToString()
+        {
+            return $"{Secondname} {SchoolNumber} {EnterYear}";
+        }
+    }
     class Program
     {
         static void Main(string[] args)
@@ -83,13 +93,18 @@ namespace ConsoleApplication8
                 //LinqBegin6. Дана строковая последовательность.
                 //Найти сумму длин всех строк, входящих в данную последовательность.
                 //TODO
+                List<string> str = new List<string> {"q", "qw", "qwe", "qwer"};
+                int sum = 0;
+                str.ForEach(x => sum +=x.Length);
             }
 
             {
                 //LinqBegin11. Дана последовательность непустых строк. 
                 //Пполучить строку, состоящую из начальных символов всех строк исходной последовательности.
                 //TODO
-
+                List<string> str = new List<string> { "q", "qw", "qwe", "qwer" };
+                var s = string.Empty;
+                str.ForEach(x => s+=x[0]);
             }
 
             {
@@ -107,6 +122,9 @@ namespace ConsoleApplication8
                 //Строки последовательности содержат только цифры и заглавные буквы латинского алфавита.
                 //Извлечь из A все строки длины K, оканчивающиеся цифрой, отсортировав их по возрастанию.
                 //TODO
+                int k = 3;
+                List<string> str = new List<string> {"abo6","ab4","ab3","ab1","a5b","ab0" };
+                var res = str.Where(x => Char.IsDigit(x.Last()) && (x.Length == k)).OrderBy(x => x);
             }
 
             {
@@ -115,6 +133,10 @@ namespace ConsoleApplication8
                 //большего D(не включая его), а второй — все элементы, начиная с элемента с порядковым номером K.
                 //Полученную последовательность(не содержащую одинаковых элементов) отсортировать по убыванию.
                 //TODO
+                int D = 50;
+                int K = 0;
+                List<int> A = new List<int> { 12,38,42,58,13,73,46};
+                var res = A.Where((x,i)=> x < D || i >= K).OrderByDescending(x => x);
             }
 
             {
@@ -131,6 +153,9 @@ namespace ConsoleApplication8
                 //символа берется первый символ этой строки; в противном случае берется последний символ строки.
                 //Отсортировать полученные символы по убыванию их кодов.
                 //TODO
+
+                List<string> str = new List<string> { "asd", "bn", "asd", "bn", "asd", "bn" };
+                var res = str.Select((x,i) => (i % 2 == 0) ? x.First() : x.Last()).OrderByDescending(x => (int)x);
             }
 
             {
@@ -138,6 +163,11 @@ namespace ConsoleApplication8
                 //Получить последовательность, содержащую все числа из A, большие K1, и все числа из B, меньшие K2. 
                 //Отсортировать полученную последовательность по возрастанию.
                 //TODO
+                int K1 = 10;
+                int K2 = 20;
+                List<int> A = new List<int> {12,43,55,24,87,25};
+                List<int> B = new List<int> {54,67,12,65,90};
+                var res = A.Where(x => x > K1).Concat(B.Where(x => x < K2)).OrderBy(x => x);
             }
             {
                 //LinqBegin46. Даны последовательности положительных целых чисел A и B; все числа в каждой последовательности различны.
@@ -159,6 +189,9 @@ namespace ConsoleApplication8
                 //разделенные двоеточием, например, «AB: CD». Порядок следования пар должен определяться порядком 
                 //первых элементов пар(по возрастанию), а для равных первых элементов — порядком вторых элементов пар(по убыванию).
                 //TODO
+                List<string> A = new List<string> {"C1", "B4", "A2", "B3"};
+                List<string> B = new List<string> {"B2", "C1", "D3","A4"};
+                var res = A.Join(B, a => a.Length, b => b.Length, (a, b) => a + " : " + b).OrderBy(x => x.Split(':')[0]).ThenByDescending(x => x.Split(':')[1]);
             }
 
             {
@@ -188,15 +221,49 @@ namespace ConsoleApplication8
 
                 }
 
+            }
+            {
+                //LinqObj17. Исходная последовательность содержит сведения об абитуриентах. Каждый элемент последовательности
+                //включает следующие поля: < Номер школы > < Год поступления > < Фамилия >
+                //Для каждого года, присутствующего в исходных данных, вывести число различных школ, которые окончили абитуриенты, 
+                //поступившие в этом году (вначале указывать число школ, затем год). 
+                //Сведения о каждом годе выводить на новой строке и упорядочивать по возрастанию числа школ, 
+                //а для совпадающих чисел — по возрастанию номера года.
+                //TODO
+                List<Student> students = new List<Student>
                 {
-                    //LinqObj17. Исходная последовательность содержит сведения об абитуриентах. Каждый элемент последовательности
-                    //включает следующие поля: < Номер школы > < Год поступления > < Фамилия >
-                    //Для каждого года, присутствующего в исходных данных, вывести число различных школ, которые окончили абитуриенты, 
-                    //поступившие в этом году (вначале указывать число школ, затем год). 
-                    //Сведения о каждом годе выводить на новой строке и упорядочивать по возрастанию числа школ, 
-                    //а для совпадающих чисел — по возрастанию номера года.
-                    //TODO
+                    new Student{Secondname = "Student_1", SchoolNumber = 1, EnterYear =  1991},
+                    new Student{Secondname = "Student_2", SchoolNumber = 2, EnterYear =  1991},
+                    new Student{Secondname = "Student_3", SchoolNumber = 3, EnterYear =  1991},
+                    new Student{Secondname = "Student_4", SchoolNumber = 1, EnterYear =  1992},
+                    new Student{Secondname = "Student_5", SchoolNumber = 1, EnterYear =  1992},
+                    new Student{Secondname = "Student_6", SchoolNumber = 2, EnterYear =  1993},
+                    new Student{Secondname = "Student_7", SchoolNumber = 1, EnterYear =  1994},
+                };
+                var schools = students.GroupBy(x => x.SchoolNumber).Select(x => x.Key);
+                var years = students.GroupBy(x => x.EnterYear).Select(x => x.Key);
+                var schoolsGr = students.GroupBy(x => x.SchoolNumber);
+                var yearsGr = students.GroupBy(x => x.EnterYear);
+
+                List<string> res = new List<string>();
+                foreach (var year in years)
+                {
+                    int count = 0;
+                    foreach (var group in schoolsGr)
+                    {
+                        foreach (var student in group)
+                        {
+                            if(student.EnterYear == year)
+                            {
+                                count++;
+                                break;
+                            }
+                        }
+                    }
+                    res.Add(count + " " +year);
                 }
+                var res1 = res.OrderBy(x=>x.Split(' ')[0]).ThenBy(x=>x.Split(' ')[1]);
+
             }
         }
     }

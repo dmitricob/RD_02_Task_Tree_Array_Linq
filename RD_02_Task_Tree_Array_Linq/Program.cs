@@ -14,7 +14,7 @@ namespace RD_02_Task_Tree_Array_Linq
         static void Main(string[] args)
         {
             MyArray<int> newArr = new MyArray<int>(10,-5);
-            for (int i = 0; i < newArr.Length; i++)
+            for (int i = 0; i < newArr.Length+1; i++)
                 newArr[i - 5] = i;
             foreach (var item in newArr)
                 Debug.WriteLine(item);
@@ -50,9 +50,10 @@ namespace RD_02_Task_Tree_Array_Linq
             {
                 SPrint(item.ToString());
             }
+
             SPrint("\nConverted to list");
-            var a = studTree.ToList();
-            foreach (var item in a)
+            var studList = studTree.ToList();
+            foreach (var item in studList)
             {
                 SPrint(item.ToString());
             }
