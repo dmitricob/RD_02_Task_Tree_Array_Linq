@@ -14,8 +14,8 @@ namespace RD_02_Task_Tree_Array_Linq
         static void Main(string[] args)
         {
             MyArray<int> newArr = new MyArray<int>(10,-5);
-            for (int i = 0; i < newArr.Length+1; i++)
-                newArr[i - 5] = i;
+            for (int i = 0; i < newArr.Length; i++)
+                newArr[i-5] = i;
             foreach (var item in newArr)
                 Debug.WriteLine(item);
             Debug.WriteLine(newArr[-5]);
@@ -38,6 +38,8 @@ namespace RD_02_Task_Tree_Array_Linq
             studTree.AddNode(new Student("Name9", "SecondName9", 5));
             studTree.AddNode(new Student("Name9", "SecondName9", 65));
             studTree.AddNode(new Student("Name9", "SecondName9", 5));
+
+            studTree.DeleteNode(new Student("Name9", "SecondName9", 5));
 
             SPrint("InorderPrint");
             studTree.InorderPrint(studTree.RootNode, Print);

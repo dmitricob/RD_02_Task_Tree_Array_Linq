@@ -11,7 +11,7 @@ namespace MyArray
     {
         private ArrayType[] arr;
         public int StartIndex { get; private set; }
-        public int EndIndex { get; private set; }
+        //public int EndIndex { get; private set; }
 
         public int Length
         {
@@ -20,6 +20,8 @@ namespace MyArray
 
         public MyArray(int size)
         {
+            if (size <= 0)
+                throw new ArgumentOutOfRangeException("Invalid array size");
             arr = new ArrayType[size];
             this.StartIndex = 0;
         }
@@ -40,20 +42,18 @@ namespace MyArray
         {
             get
             {
-                return arr[CheckRange(index)];
+                var realIndex = index - this.StartIndex;
+                if (realIndex < 0 || realIndex >= this.Length)
+                    throw new IndexOutOfRangeException($"array range {this.StartIndex} .. {this.StartIndex + this.Length - 1} index in custom array : {index} array");
+                return arr[realIndex];
             }
             set
             {
-                arr[CheckRange(index)] = value;
+                var realIndex = index - this.StartIndex;
+                if (realIndex < 0 || realIndex >= this.Length)
+                    throw new IndexOutOfRangeException($"array range {this.StartIndex} .. {this.StartIndex + this.Length - 1} index in custom array : {index} array");
+                arr[realIndex] = value;
             }
-        }
-
-        private int CheckRange(int index)
-        {
-            var realIndex = index - this.StartIndex;
-            if (realIndex < 0 || realIndex >= this.Length)
-                throw new IndexOutOfRangeException($"array range {this.StartIndex} .. {this.StartIndex + this.Length - 1} index in custom array : {index} array");
-            return realIndex;
         }
 
         public IEnumerator GetEnumerator()

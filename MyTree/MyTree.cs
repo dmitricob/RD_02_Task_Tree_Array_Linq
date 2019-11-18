@@ -35,10 +35,6 @@ namespace MyTree
                 return;
             }
             this.AddNode(this.RootNode,value);
-            //if (this.RootNode == null)
-            //    this.RootNode = new MyNode<NodeType>(value);
-            //else
-            //    RootNode.AddNode(value);
         }
         private void AddNode(MyNode<NodeType> root, NodeType value)
         {
@@ -66,15 +62,17 @@ namespace MyTree
 
         public MyNode<NodeType> GetMin(MyNode<NodeType> root)
         {
+            if (Object.ReferenceEquals(root, null))
+                return default(MyNode<NodeType>);
             if (!root.ExistLeftChild())
                 return root;
-            return this.GetMax(root.LeftNode);
+            return this.GetMin(root.LeftNode);
         }
         public MyNode<NodeType> GetMax(MyNode<NodeType> root)
         {
             if (!root.ExistRightChild())
                 return root;
-            return this.GetMin(root.RightNode);
+            return this.GetMax(root.RightNode);
         }
 
 
@@ -94,7 +92,7 @@ namespace MyTree
         }
         public void DeleteNode(NodeType value) // ToDo
         {
-            var target =  this.FindNode(value);
+            var target = this.FindNode(value);
             if (ReferenceEquals(target, null))
                 return;
             target.ReplaceWith(this.GetMin(target.RightNode));
@@ -174,6 +172,7 @@ namespace MyTree
                     nodeStack.Push(current.LeftNode);
             }
         }
+
     }
     
 }

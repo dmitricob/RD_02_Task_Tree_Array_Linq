@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqTask", "LinqTask\LinqTa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyTree", "MyTree\MyTree.csproj", "{7C051EF3-4909-4417-9CDA-569E4B0DFE59}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitMyArrayTest", "XUnitMyArrayTest\XUnitMyArrayTest.csproj", "{282DD431-8F71-410D-AC84-0E05EE609AC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitMyTreeTest", "XUnitMyTreeTest\XUnitMyTreeTest.csproj", "{F92C49EA-1C4A-4364-A21D-41876BB39277}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{7C051EF3-4909-4417-9CDA-569E4B0DFE59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C051EF3-4909-4417-9CDA-569E4B0DFE59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C051EF3-4909-4417-9CDA-569E4B0DFE59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{282DD431-8F71-410D-AC84-0E05EE609AC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{282DD431-8F71-410D-AC84-0E05EE609AC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{282DD431-8F71-410D-AC84-0E05EE609AC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{282DD431-8F71-410D-AC84-0E05EE609AC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F92C49EA-1C4A-4364-A21D-41876BB39277}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F92C49EA-1C4A-4364-A21D-41876BB39277}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F92C49EA-1C4A-4364-A21D-41876BB39277}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F92C49EA-1C4A-4364-A21D-41876BB39277}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
